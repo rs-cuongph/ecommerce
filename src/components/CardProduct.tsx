@@ -1,4 +1,5 @@
 import { IProduct } from "@/shared/interfaces";
+import { ROUTES_NAME } from "@/shared/routes";
 import { formatNumberWithCommas } from "@/shared/utils/formatNumberWithCommas";
 import {
   Card,
@@ -7,6 +8,7 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/router";
 import React from "react";
 
 interface ICardProductProps {
@@ -14,8 +16,12 @@ interface ICardProductProps {
 }
 
 const CardProduct = ({ item }: ICardProductProps) => {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`${ROUTES_NAME.productDetail}/${item.id}`);
+  };
   return (
-    <Card sx={{ maxWidth: 250 }}>
+    <Card onClick={handleClick}>
       <CardActionArea>
         <CardMedia
           component="img"

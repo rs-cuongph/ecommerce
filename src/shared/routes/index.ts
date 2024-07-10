@@ -1,3 +1,6 @@
 export const ROUTES_NAME = {
-  home: '/'
+  home: '/',
+  about: '/about-us',
+  contact: '/contact',
+  productDetail: '/product'
 }

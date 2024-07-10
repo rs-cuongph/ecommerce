@@ -3,5 +3,18 @@
 @tailwind utilities;
 
 body {
-  background-color: #f3f3f3;
+  background-color: #ebebfd65 !important;
+}
+
+.bg-color-title {
+  background: -webkit-linear-gradient(
+    to right,
+    #c91400,
+    #ffff
+  ); /* Gradient for Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #c91400,
+    #ffff
+  ); /* Standard gradient syntax */
 }
