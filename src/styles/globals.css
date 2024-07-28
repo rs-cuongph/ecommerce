@@ -18,3 +18,9 @@ body {
     #ffff
   ); /* Standard gradient syntax */
 }
+
+@media screen and (max-width: 768px) {
+  body {
+    background-color: #ffff !important;
+  }
+}

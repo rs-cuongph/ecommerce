@@ -5,12 +5,33 @@ export const menuItems = [
     title: 'Trang chủ',
     href: ROUTES_NAME.home
   },
+]
+
+export const subMenuItems = [
   {
-    title: 'Về chúng tôi',
-    href: ROUTES_NAME.about
+    title: 'Bồn nước Sơn Hà',
+    href: ROUTES_NAME.waterTanks
   },
   {
-    title: 'Liên hệ',
-    href: ROUTES_NAME.contact
-  }
+    title: 'Thái năng Sơn Hà',
+    href: ROUTES_NAME.solarEnergy
+  },
+  {
+    title: 'Bình nóng lạnh',
+    href: ROUTES_NAME.waterHeater
+  },
+  {
+    title: 'Bồn tự hoại',
+    href: ROUTES_NAME.septicTank
+  },
+  {
+    title: 'Bồn nhựa',
+    href: ROUTES_NAME.plasticTank
+  },
+  {
+    title: 'Chậu sen vòi',
+    href: ROUTES_NAME.sinkTank
+  },
 ]
+
+export const spMenuItems = [...menuItems, ...subMenuItems]

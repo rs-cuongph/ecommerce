@@ -24,11 +24,6 @@ const ProductServiceCard = () => {
         />
         <Divider />
         <ListItemIconCustom
-          label="Giao hàng Miễn phí"
-          iconEl={<AiFillTruck color="red" size={30} />}
-        />
-        <Divider />
-        <ListItemIconCustom
           label="Đảm bảo hàng Chính Hãng chất lượng cao"
           iconEl={<AiFillGift color="red" size={30} />}
         />

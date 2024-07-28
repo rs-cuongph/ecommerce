@@ -25,7 +25,8 @@ const CardProduct = ({ item }: ICardProductProps) => {
       <CardActionArea>
         <CardMedia
           component="img"
-          image={item.imgUrl ?? "https://picsum.photos/3000/3000.jpg"}
+          image={item.image_url ?? ""}
+          sx={{ height: 200, objectFit: "cover" }}
         />
         <CardContent className="xs:p-[5px] sm:p-[5px] md:p-[10px]">
           <Typography
@@ -33,35 +34,33 @@ const CardProduct = ({ item }: ICardProductProps) => {
             variant="subtitle1"
             fontWeight={600}
             component="div"
-            className="text-base md:text-base xs:text-sm"
+            className="text-base md:text-base sm:text-sm xs:text-sm lg:min-h-[55px]"
           >
             {item.name}
           </Typography>
           <Typography
             variant="subtitle1"
             fontWeight={600}
-            className="text-lg text-red"
+            className="text-lg md:text-lg sm:text-sm xs:text-sm text-red"
           >
-            {formatNumberWithCommas(item.price)}
+            {formatNumberWithCommas(
+              item.discounted_price > 0
+                ? item.discounted_price
+                : item.original_price
+            )}
             <u>đ</u>
           </Typography>
-          {item.oldPrice && (
+          {item.discounted_price > 0 && (
             <Typography
               variant="body2"
               color="text.secondary"
               fontWeight={600}
               className="line-through"
             >
-              {formatNumberWithCommas(item.oldPrice)}
+              {formatNumberWithCommas(item.original_price)}
               <u>đ</u>
             </Typography>
           )}
-          <Typography
-            variant="body2"
-            className="overflow-hidden overflow-ellipsis whitespace-nowrap text-primary"
-          >
-            {item.desc}
-          </Typography>
         </CardContent>
       </CardActionArea>
     </Card>

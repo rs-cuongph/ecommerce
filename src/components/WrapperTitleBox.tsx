@@ -1,15 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
-import { Box, BoxProps, Typography } from "@mui/material";
+import { Box, BoxProps, Button, Typography } from "@mui/material";
 import React, { ReactNode } from "react";
 interface IWrapperTitleBoxProps extends BoxProps {
   title?: string;
   srcBanner?: string;
   children: ReactNode;
+  isShowMoreBtn?: boolean;
 }
 const WrapperTitleBox = ({
   title,
   srcBanner,
   children,
+  isShowMoreBtn,
   ...rest
 }: IWrapperTitleBoxProps) => {
   return (
@@ -34,6 +36,13 @@ const WrapperTitleBox = ({
         </Box>
       </Box>
       {children}
+      {isShowMoreBtn && (
+        <Box display="flex" width="100%" justifyContent="center" pb={2}>
+          <Button variant="contained" color="primary">
+            Xem thêm
+          </Button>
+        </Box>
+      )}
     </Box>
   );
 };

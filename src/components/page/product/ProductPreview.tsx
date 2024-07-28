@@ -1,32 +1,40 @@
 /* eslint-disable @next/next/no-img-element */
-import { Box, Grid } from "@mui/material";
+import { Backdrop, Box, Grid } from "@mui/material";
 import React from "react";
 
-const ProductPreview = () => {
+const ProductPreview = ({ src = "" }: { src: string }) => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <Grid container spacing={1}>
-      <Grid item md={8} sm={12}>
+      <Grid item md={11} sm={12} xs={12}>
         <img
-          className="w-full max-w-[600px]"
-          src="https://picsum.photos/3000/3000.jpg"
+          className="w-full border-[1px] border-gray cursor-pointer sm:max-w-[400px] xs:max-w-[400px]"
+          src={src ?? ""}
+          onClick={handleOpen}
+          alt="product"
         />
       </Grid>
-      <Grid item md={4} sm={12}>
-        <Box className="md:flex-col sm:flex-row xs:hidden sm:flex gap-[10px]">
+      {src && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={open}
+          onClick={handleClose}
+        >
           <img
-            className="w-full max-w-[100px]"
-            src="https://picsum.photos/3000/3000.jpg"
+            className="w-full max-w-[700px] border-[1px] border-gray"
+            src={src}
+            alt="product-preview"
           />
-          <img
-            className="w-full max-w-[100px]"
-            src="https://picsum.photos/3000/3000.jpg"
-          />
-          <img
-            className="w-full max-w-[100px]"
-            src="https://picsum.photos/3000/3000.jpg"
-          />
-        </Box>
-      </Grid>
+        </Backdrop>
+      )}
     </Grid>
   );
 };

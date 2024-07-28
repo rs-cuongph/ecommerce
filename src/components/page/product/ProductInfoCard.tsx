@@ -1,4 +1,5 @@
 import PaperCustom from "@/components/common/PaperCustom/PaperCustom";
+import { IProduct } from "@/shared/interfaces";
 import { formatNumberWithCommas } from "@/shared/utils/formatNumberWithCommas";
 import {
   Box,
@@ -10,30 +11,46 @@ import {
 } from "@mui/material";
 import React from "react";
 
-const ProductInfoCard = () => {
+const ProductInfoCard = ({ product }: { product: IProduct }) => {
   return (
     <Box display="flex" flexDirection="column" gap={1}>
       <Box display="flex" flexDirection="column" gap={1}>
-        <Typography variant="h6">Bồn nước Nhựa Sơn Hà 300L đứng</Typography>
-        <Typography variant="body2">Mã hàng: 2908</Typography>
+        <Typography
+          variant="h6"
+          className="text-base md:text-base sm:text-sm xs:text-sm"
+        >
+          {product?.name ?? ""}
+        </Typography>
+        <Typography
+          variant="body2"
+          className="text-base md:text-base sm:text-sm xs:text-sm"
+        >
+          Mã hàng: {product?.id ?? ""}
+        </Typography>
       </Box>
       <Divider />
       <Box display="flex" flexDirection="column" gap={1}>
         <Box display="flex" gap={1} alignItems="center">
-          <Typography variant="body1" className="text-sm">
+          <Typography
+            variant="body1"
+            className="text-base md:text-base sm:text-sm xs:text-sm"
+          >
             Giá hiện tại:
           </Typography>
           <Typography
             variant="subtitle1"
             fontWeight={600}
-            className="text-lg text-red"
+            className="text-lg md:text-lg sm:text-sm xs:text-sm text-red"
           >
-            {formatNumberWithCommas(7000000)}
+            {formatNumberWithCommas(product?.discounted_price ?? 0)}
             <u>đ</u>
           </Typography>
         </Box>
         <Box display="flex" gap={1} alignItems="center">
-          <Typography variant="body1" className="text-sm">
+          <Typography
+            variant="body1"
+            className="text-base md:text-base sm:text-sm xs:text-sm"
+          >
             Giá cũ:
           </Typography>
           <Typography
@@ -42,38 +59,22 @@ const ProductInfoCard = () => {
             fontWeight={600}
             className="line-through"
           >
-            {formatNumberWithCommas(7000000)}
+            {formatNumberWithCommas(product?.original_price ?? 0)}
             <u>đ</u>
           </Typography>
         </Box>
-        <List>
-          <ListItem>
-            <Typography
-              variant="body1"
-              className="text-red text-sm text-sm"
-              fontWeight={600}
-            >
-              Bảo hành:
-            </Typography>
-            <Typography variant="body1" className="text-sm">
-              {" "}
-              10 năm
-            </Typography>
-          </ListItem>
-          <ListItem>
-            <Typography
-              variant="body1"
-              className="text-red text-sm"
-              fontWeight={600}
-            >
-              Kiểu dáng:
-            </Typography>
-            <Typography variant="body1" className="text-sm">
-              {" "}
-              Bồn đứng
-            </Typography>
-          </ListItem>
-        </List>
+        <Box display="flex" gap={1} alignItems="center">
+          <Typography
+            variant="body1"
+            className="text-red text-sm"
+            fontWeight={600}
+          >
+            Bảo hành:　
+          </Typography>
+          <Typography variant="body1" className="text-sm">
+            {product?.warranty ?? ""}
+          </Typography>
+        </Box>
         <Box display="flex" gap={1} alignItems="center">
           <Typography variant="body1" className="text-sm">
             Tình trạng:
@@ -81,10 +82,10 @@ const ProductInfoCard = () => {
           <Typography
             variant="subtitle1"
             fontWeight={600}
-            className="text-xl"
+            className="text-base md:text-base sm:text-sm xs:text-sm"
             color="primary"
           >
-            CÒN HÀNG
+            {product?.status ?? ""}
           </Typography>
         </Box>
       </Box>
@@ -92,7 +93,7 @@ const ProductInfoCard = () => {
         <ul className="list-disc">
           <li>Miễn phí vận chuyển toàn quốc</li>
           <li>Miễn phí khảo sát tư vấn</li>
-          <li>Áp dụng cho khách hàng gọi điện, đến trực tiếp hoặc chát!</li>
+          <li>Áp dụng cho khách hàng gọi điện hoặc đến trực tiếp!</li>
         </ul>
       </PaperCustom>
       <Box display="flex" justifyContent="center">
